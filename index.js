@@ -1,5 +1,6 @@
-const isPal = (s) => {
+import inquirer from 'inquirer';
 
+const isPal = (s) => {
     // Function to check if the character is alphanumeric with unicode values
     const isAlphaNumeric = (c) => ((c.toLowerCase() >= 'a' && c.toLowerCase() <= 'z') || (c >= '0' && c <= '9'));
 
@@ -19,7 +20,7 @@ const isPal = (s) => {
         // If not alphanumeric then skip to next char
         if (!isAlphaNumeric(s.charAt(right))) {
             right--;
-            continue;
+            continue; 
         }
 
         // If the chars at left and right pointers are not equal at the current pointers then not palindrome
@@ -38,10 +39,16 @@ const isPal = (s) => {
     return true;
 }
 
-const str1 = "RaceCar";
-const str2 = "Hello";
-const str3 = "Do geese see God?";
+const checkPal = async () => {
+    const input = await inquirer.prompt([
+        {
+            type: 'input',
+            name: 'input',
+            message: 'Enter any string to check if it is a palindrome'
+        }
+    ]);
+    console.log(input);
+    isPal(input);
+}
 
-isPal(str1);
-isPal(str2);
-isPal(str3);
+checkPal()
