@@ -6,25 +6,25 @@ const isPal = (s) => {
 
     // Two pointer approach
     let left = 0;
-    let right = s.length - 1;
+    let right = s.input.length - 1;
 
     // While the two pointers do not equal eachother
     while (left < right) {
 
         // If not alphanumeric then skip to next char
-        if (!isAlphaNumeric(s.charAt(left))) {
+        if (!isAlphaNumeric(s.input.charAt(left))) {
             left++;
             continue;
         }
 
         // If not alphanumeric then skip to next char
-        if (!isAlphaNumeric(s.charAt(right))) {
+        if (!isAlphaNumeric(s.input.charAt(right))) {
             right--;
             continue; 
         }
 
         // If the chars at left and right pointers are not equal at the current pointers then not palindrome
-        if (s.charAt(left).toLowerCase() !== s.charAt(right).toLowerCase()) {
+        if (s.input.charAt(left).toLowerCase() !== s.input.charAt(right).toLowerCase()) {
             console.log("Is not Pal!");
             return false;
         }
@@ -47,7 +47,6 @@ const checkPal = async () => {
             message: 'Enter any string to check if it is a palindrome'
         }
     ]);
-    console.log(input);
     isPal(input);
 }
 
